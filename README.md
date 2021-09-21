@@ -1,2 +1,4 @@
 # android-app-teaching-materials-templates
-Templates for Android app teaching materials
+
+Android app programming school for beginners does not do large-scale app development, so
+A collection of app templates targeting instructors teaching at programming schools.
