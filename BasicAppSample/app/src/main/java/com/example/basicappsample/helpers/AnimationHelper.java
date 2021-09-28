@@ -28,7 +28,14 @@ public final class AnimationHelper {
         animation.setRepeatCount(Animation.INFINITE);
         view.startAnimation(animation);
     }
-    // 表示 / 非表示アニメーション処理
+
+    /**
+     * Fade In / Fade outアニメーションを行う
+     *
+     * @param isVisible true: 表示 false: 非表示
+     * @param vg ConstraintLayoutやLinearLayoutなどのレイアウトクラスのインスタンス
+     * @param targetView アニメーションを適用させるView
+     */
     public static void startFadeAnimation(boolean isVisible, ViewGroup vg, View targetView) {
         MaterialFade fade = new MaterialFade();
         fade.setDuration(500L);
