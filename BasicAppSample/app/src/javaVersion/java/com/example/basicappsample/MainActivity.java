@@ -6,6 +6,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.basicappsample.helpers.AnimationHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,5 +16,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView textHello = findViewById(R.id.text_hello);
         textHello.setText("Hello, Android Java");
+        AnimationHelper.startAlphaAnimation(textHello);
     }
 }

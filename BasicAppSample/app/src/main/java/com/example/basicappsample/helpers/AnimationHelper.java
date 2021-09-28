@@ -29,7 +29,7 @@ public final class AnimationHelper {
         view.startAnimation(animation);
     }
     // 表示 / 非表示アニメーション処理
-    private void startFadeAnimation(boolean isVisible, ViewGroup vg, View targetView) {
+    public static void startFadeAnimation(boolean isVisible, ViewGroup vg, View targetView) {
         MaterialFade fade = new MaterialFade();
         fade.setDuration(500L);
         TransitionManager.beginDelayedTransition(vg, fade);
