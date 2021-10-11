@@ -12,7 +12,7 @@ A collection of app templates targeting instructors teaching at programming scho
 # [BasicAppSample](https://github.com/LeoAndo/android-app-teaching-materials-templates/tree/main/BasicAppSample)
 
 - Very Simple Template project that supports both java and kotlin versions
-<img src="https://user-images.githubusercontent.com/16476224/134201788-204d0004-7617-47a5-8b73-dc11a8f3464b.png" width=320 />
+<img src="https://user-images.githubusercontent.com/16476224/136757503-1b18b6f6-de82-4457-a63a-b2ef774864ee.gif" width=320 />
 
 # Other Templates
 https://github.com/LeoAndo/AndroidAppTemplate<br>
