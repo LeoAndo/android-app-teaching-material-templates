@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -46,6 +47,14 @@ android {
         }
     }
     // ADD-FLAVOR-END
+
+    // ADD-ViewBinding-START
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+    // ADD-ViewBinding-END
+
 }
 
 dependencies {
