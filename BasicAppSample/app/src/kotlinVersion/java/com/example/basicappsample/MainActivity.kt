@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import com.example.basicappsample.databinding.ActivityMainBinding
 import com.example.basicappsample.helpers.AnimationHelper
 import com.example.basicappsample.helpers.KeyboardHelpable
+import com.example.basicappsample.media.MainSoundPlayer
 
 class MainActivity : AppCompatActivity(), KeyboardHelpable {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity(), KeyboardHelpable {
         val binding = ActivityMainBinding.inflate(layoutInflater).also {
             setContentView(it.root)
         }
+        val soundPlayer = MainSoundPlayer(this)
         binding.textHello.text = "Hello, Android Kotlin"
         AnimationHelper.startAlphaAnimation(binding.textHello)
 
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity(), KeyboardHelpable {
             } else {
                 return@setOnKeyListener false
             }
+        }
+        binding.button.setOnClickListener {
+            soundPlayer.playButtonSound()
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.basicappsample.databinding.ActivityMainBinding;
 import com.example.basicappsample.helpers.AnimationHelper;
 import com.example.basicappsample.helpers.KeyboardHelpable;
+import com.example.basicappsample.media.MainSoundPlayer;
 
 public class MainActivity extends AppCompatActivity implements KeyboardHelpable {
     @Override
@@ -26,5 +27,8 @@ public class MainActivity extends AppCompatActivity implements KeyboardHelpable 
                 return false;
             }
         });
+
+        MainSoundPlayer soundPlayer = new MainSoundPlayer(this);
+        binding.button.setOnClickListener(v -> soundPlayer.playButtonSound());
     }
 }
