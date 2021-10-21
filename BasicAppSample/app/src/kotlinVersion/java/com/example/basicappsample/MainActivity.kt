@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), KeyboardHelpable {
             setContentView(it.root)
         }
         val soundPlayer = MainSoundPlayer(this)
+        lifecycle.addObserver(soundPlayer)
         binding.textHello.text = "Hello, Android Kotlin"
         AnimationHelper.startAlphaAnimation(binding.textHello)
 

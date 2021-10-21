@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements KeyboardHelpable 
         });
 
         MainSoundPlayer soundPlayer = new MainSoundPlayer(this);
+        getLifecycle().addObserver(soundPlayer);
         binding.button.setOnClickListener(v -> soundPlayer.playButtonSound());
     }
 }

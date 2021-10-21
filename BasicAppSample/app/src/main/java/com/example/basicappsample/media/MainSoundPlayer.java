@@ -23,10 +23,10 @@ public class MainSoundPlayer implements LifecycleObserver {
     private int checkBoxStreamId;
 
     private static final String LOG_TAG = MainSoundPlayer.class.getSimpleName();
-    private final float LEFT_VOLUME_VALUE = 1.0f; // left volume value (range = 0.0 to 1.0)
-    private final float RIGHT_VOLUME_VALUE = 1.0f;// right volume value (range = 0.0 to 1.0)
-    private final int SOUND_LOOP_MODE_NO_LOOP = 0; // loop mode (0 = no loop, -1 = loop forever)
-    private final float SOUND_PLAY_BACK_RATE = 1.0f; // playback rate (1.0 = normal playback, range 0.5 to 2.0)
+    private static final float LEFT_VOLUME_VALUE = 1.0f; // left volume value (range = 0.0 to 1.0)
+    private static final float RIGHT_VOLUME_VALUE = 1.0f;// right volume value (range = 0.0 to 1.0)
+    private static final int SOUND_LOOP_MODE_NO_LOOP = 0; // loop mode (0 = no loop, -1 = loop forever)
+    private static final float SOUND_PLAY_BACK_RATE = 1.0f; // playback rate (1.0 = normal playback, range 0.5 to 2.0)
     private static final int PRIORITY_1 = 1;
 
     public MainSoundPlayer(Context context) {
@@ -68,24 +68,25 @@ public class MainSoundPlayer implements LifecycleObserver {
 
     // 画面表示時に呼ばれる
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    private void autoResume() {
+    private void onResume() {
         Log.d(LOG_TAG, "call autoResume");
+        if (soundPool == null) return;
         soundPool.autoResume(); // soundPool.autoPause()したときにアクティブだったすべての音声ファイルを再生する.
     }
 
     // 画面非表示時に呼ばれる
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    private void autoPause() {
+    private void onPause() {
         Log.d(LOG_TAG, "call autoPause");
+        if (soundPool == null) return;
         soundPool.autoPause(); // 全ての再生中の音声ファイルを停止する.
     }
 
     // 画面終了時に呼ばれる
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    private void release() {
+    private void onDestroy() {
         Log.d(LOG_TAG, "call release soundPool: " + soundPool);
-        if (soundPool != null) {
-            soundPool.release(); // SoundPoolによって使用されているすべてのメモリとネイティブリソースを解放する.
-        }
+        if (soundPool == null) return;
+        soundPool.release(); // SoundPoolによって使用されているすべてのメモリとネイティブリソースを解放する.
     }
 }
