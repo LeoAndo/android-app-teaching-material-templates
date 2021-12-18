@@ -14,4 +14,4 @@ A collection of app templates targeting instructors teaching at programming scho
 
 # Other Templates
 https://github.com/LeoAndo/AndroidAppTemplate<br>
-https://github.com/LeoAndo/AndroidComposeAppTemplate<br>
+https://github.com/LeoAndo/android-compose-templates<br>
