@@ -9,6 +9,7 @@
 - [Per-app language preferences (Android 13+)](https://github.com/LeoAndo/android-per-app-language-preferences-samples)
 - [Themed app icons(Android13+)](https://github.com/LeoAndo/android-themed-icon-samples)
 - [Navigation Safeargs](https://developer.android.com/guide/navigation/navigation-pass-data?hl=ja)
+- [dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ja)
 - Kotlin
 - ViewModel
 - use Product Flavor (Switch navigation-bar / navigation-drawer layout)
