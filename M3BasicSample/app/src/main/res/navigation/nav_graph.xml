@@ -10,16 +10,23 @@
         android:name="com.example.m3basicsample.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
-
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_FirstFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.m3basicsample.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
+        <argument
+            android:name="user"
+            app:argType="com.example.m3basicsample.models.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.example.m3basicsample.ThirdFragment"
+        android:label="@string/third_fragment_label">
         <argument
             android:name="user"
             app:argType="com.example.m3basicsample.models.User" />
