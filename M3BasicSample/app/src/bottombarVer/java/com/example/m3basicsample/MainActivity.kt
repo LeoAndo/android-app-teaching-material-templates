@@ -84,23 +84,19 @@ internal class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.language_settings_system -> {
-                applicationLocalesHandler.localeManager.applicationLocales =
-                    LocaleList.getEmptyLocaleList()
+                applicationLocalesHandler.applicationLocales = LocaleList.getEmptyLocaleList()
                 true
             }
             R.id.language_settings_ja -> {
-                applicationLocalesHandler.localeManager.applicationLocales =
-                    LocaleList.forLanguageTags("ja")
+                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("ja")
                 true
             }
             R.id.language_settings_ko -> {
-                applicationLocalesHandler.localeManager.applicationLocales =
-                    LocaleList.forLanguageTags("ko")
+                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("ko")
                 true
             }
             R.id.language_settings_zh -> {
-                applicationLocalesHandler.localeManager.applicationLocales =
-                    LocaleList.forLanguageTags("zh")
+                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("zh")
                 true
             }
             else -> {
