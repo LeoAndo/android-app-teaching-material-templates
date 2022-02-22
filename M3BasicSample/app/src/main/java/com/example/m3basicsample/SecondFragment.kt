@@ -1,11 +1,16 @@
 package com.example.m3basicsample
 
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.KeyEvent
 import android.view.View
+import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.m3basicsample.databinding.FragmentSecondBinding
+import com.example.m3basicsample.extentions.hideKeyboard
 import com.example.m3basicsample.viewmodels.SecondViewModel
 
 /**
@@ -25,6 +30,26 @@ internal class SecondFragment : Fragment(R.layout.fragment_second) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSecondBinding.bind(view)
         binding.textviewSecond.text = args.user.name + " : " + args.user.age
+
+        binding.editEmail.doOnTextChanged { text, _, _, _ ->
+            binding.button.isEnabled = !TextUtils.isEmpty(text)
+            val isErrorEnabled = TextUtils.isEmpty(text)
+            binding.editEmailLayout.isErrorEnabled = isErrorEnabled
+            if (isErrorEnabled) {
+                binding.editEmailLayout.error = "入力してください！！"
+            }
+        }
+        binding.editEmail.setOnKeyListener { v, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                requireActivity().hideKeyboard()
+                return@setOnKeyListener true
+            } else {
+                return@setOnKeyListener false
+            }
+        }
+        binding.button.setOnClickListener {
+            Toast.makeText(requireContext(), "clicked!!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {
