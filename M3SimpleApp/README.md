@@ -9,6 +9,7 @@
 - [dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ja)
 - Kotlin
 - ViewModel
+- Use Activity Only
 
 # Screenshot
 
