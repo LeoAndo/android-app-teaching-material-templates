@@ -3,9 +3,11 @@ package com.example.m3basicsample
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.m3basicsample.databinding.FragmentFirstBinding
 import com.example.m3basicsample.models.User
+import com.example.m3basicsample.viewmodels.FirstViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -17,6 +19,7 @@ internal class FirstFragment : Fragment(R.layout.fragment_first) {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val viewModel by viewModels<FirstViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,6 +31,7 @@ internal class FirstFragment : Fragment(R.layout.fragment_first) {
                 )
             )
         }
+        viewModel.foo()
     }
 
     override fun onDestroyView() {
