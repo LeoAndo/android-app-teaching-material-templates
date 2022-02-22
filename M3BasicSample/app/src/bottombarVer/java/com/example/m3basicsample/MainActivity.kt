@@ -1,6 +1,5 @@
 package com.example.m3basicsample
 
-import android.app.LocaleManager
 import android.os.Bundle
 import android.os.LocaleList
 import android.util.Log
@@ -17,15 +16,21 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.m3basicsample.core.ApplicationLocalesHandler
 import com.example.m3basicsample.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 internal class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var localeManager: LocaleManager
+
+    @Inject
+    lateinit var applicationLocalesHandler: ApplicationLocalesHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -49,9 +54,6 @@ internal class MainActivity : AppCompatActivity() {
                 .setAnchorView(R.id.fab)
                 .setAction("Action", null).show()
         }
-
-        localeManager = getSystemService(LocaleManager::class.java)
-
         observeDestinations(navView, navController)
     }
 
@@ -81,19 +83,19 @@ internal class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.language_settings_system -> {
-                localeManager.applicationLocales = LocaleList.getEmptyLocaleList()
+                applicationLocalesHandler.applicationLocales = LocaleList.getEmptyLocaleList()
                 true
             }
             R.id.language_settings_ja -> {
-                localeManager.applicationLocales = LocaleList.forLanguageTags("ja")
+                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("ja")
                 true
             }
             R.id.language_settings_ko -> {
-                localeManager.applicationLocales = LocaleList.forLanguageTags("ko")
+                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("ko")
                 true
             }
             R.id.language_settings_zh -> {
-                localeManager.applicationLocales = LocaleList.forLanguageTags("zh")
+                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("zh")
                 true
             }
             else -> {
