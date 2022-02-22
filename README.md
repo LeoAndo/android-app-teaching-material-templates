@@ -14,7 +14,3 @@ targetSdkPreview "Tiramisu"
 ```
 
 # [M3BasicSample](https://github.com/LeoAndo/android-app-teaching-material-templates/tree/main/M3BasicSample)
-
-# Other Templates
-https://github.com/LeoAndo/AndroidAppTemplate<br>
-https://github.com/LeoAndo/android-compose-templates<br>
