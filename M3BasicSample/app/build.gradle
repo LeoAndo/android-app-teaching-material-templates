@@ -34,6 +34,21 @@ android {
     buildFeatures {
         viewBinding true
     }
+    // ADD-FLAVOR-START
+    flavorDimensions "version"
+    productFlavors {
+        bottombarVer {
+            dimension "version"
+            applicationIdSuffix ".bottombar"
+            versionNameSuffix "-bottombar"
+        }
+        drawerVer {
+            dimension "version"
+            applicationIdSuffix ".drawer"
+            versionNameSuffix "-drawer"
+        }
+    }
+    // ADD-FLAVOR-END
 }
 
 dependencies {

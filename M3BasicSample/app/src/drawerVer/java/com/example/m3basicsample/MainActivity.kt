@@ -15,10 +15,12 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.m3basicsample.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 internal class MainActivity : AppCompatActivity() {
 
@@ -37,11 +39,17 @@ internal class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
         navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.FirstFragment, R.id.SecondFragment
+            ), drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setupWithNavController(navController)
 
         binding.fab.setOnClickListener { view ->
@@ -52,10 +60,10 @@ internal class MainActivity : AppCompatActivity() {
 
         localeManager = getSystemService(LocaleManager::class.java)
 
-        observeDestinations(navView)
+        observeDestinations(navView, navController)
     }
 
-    private fun observeDestinations(navView: BottomNavigationView) {
+    private fun observeDestinations(navView: NavigationView, navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.FirstFragment, R.id.SecondFragment -> {
