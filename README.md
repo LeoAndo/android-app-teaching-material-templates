@@ -7,6 +7,11 @@ A collection of app templates targeting instructors teaching at programming scho
 
 <img width="500" alt="スクリーンショット 2022-02-22 21 06 19" src="https://user-images.githubusercontent.com/16476224/155129056-7ca765fd-0bf2-406b-b54f-c6baea10f391.png">
 
+# Min / Target SDKVersion
+```groovy
+minSdkPreview "Tiramisu"
+targetSdkPreview "Tiramisu"
+```
 
 # [M3BasicSample](https://github.com/LeoAndo/android-app-teaching-material-templates/tree/main/M3BasicSample)
 
