@@ -20,9 +20,8 @@
         android:name="com.example.m3basicsample.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.example.m3basicsample.models.User" />
     </fragment>
 </navigation>

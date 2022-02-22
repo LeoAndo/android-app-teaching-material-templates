@@ -3,7 +3,7 @@ package com.example.m3basicsample
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.m3basicsample.databinding.FragmentSecondBinding
 
 /**
@@ -16,13 +16,12 @@ internal class SecondFragment : Fragment(R.layout.fragment_second) {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val args by navArgs<SecondFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSecondBinding.bind(view)
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
+        binding.textviewSecond.text = args.user.name + " : " + args.user.age
     }
 
     override fun onDestroyView() {

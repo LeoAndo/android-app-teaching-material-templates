@@ -1,6 +1,7 @@
 package com.example.m3basicsample
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -57,7 +58,12 @@ internal class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+        val ret = navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        Log.d(TAG, "onSupportNavigateUp: ret $ret")
+        return ret
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }

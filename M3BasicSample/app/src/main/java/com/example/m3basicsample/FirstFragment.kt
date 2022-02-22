@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.m3basicsample.databinding.FragmentFirstBinding
+import com.example.m3basicsample.models.User
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -21,7 +22,11 @@ internal class FirstFragment : Fragment(R.layout.fragment_first) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFirstBinding.bind(view)
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(
+                FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                    User("Yamada", 20)
+                )
+            )
         }
     }
 
