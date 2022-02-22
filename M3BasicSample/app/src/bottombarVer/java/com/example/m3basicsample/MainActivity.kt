@@ -1,6 +1,5 @@
 package com.example.m3basicsample
 
-import android.app.LocaleManager
 import android.os.Bundle
 import android.os.LocaleList
 import android.util.Log
