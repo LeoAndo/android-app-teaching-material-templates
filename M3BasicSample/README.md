@@ -3,6 +3,7 @@
 
 
 # Features
+- [Navigation Bar](https://m3.material.io/components/navigation-bar)
 - [SplashScreen](https://github.com/LeoAndo/android12-splash-screen)
 - [Per-app language preferences (Android 13+)](https://github.com/LeoAndo/android-per-app-language-preferences-samples)
 - [Themed app icons(Android13+)](https://github.com/LeoAndo/android-themed-icon-samples)
