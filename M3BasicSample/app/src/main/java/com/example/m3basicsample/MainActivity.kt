@@ -1,6 +1,8 @@
 package com.example.m3basicsample
 
+import android.app.LocaleManager
 import android.os.Bundle
+import android.os.LocaleList
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,7 @@ internal class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var localeManager: LocaleManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -38,6 +41,8 @@ internal class MainActivity : AppCompatActivity() {
                 .setAnchorView(R.id.fab)
                 .setAction("Action", null).show()
         }
+
+        localeManager = getSystemService(LocaleManager::class.java)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -51,8 +56,25 @@ internal class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+            R.id.language_settings_system -> {
+                localeManager.applicationLocales = LocaleList.getEmptyLocaleList()
+                true
+            }
+            R.id.language_settings_ja -> {
+                localeManager.applicationLocales = LocaleList.forLanguageTags("ja")
+                true
+            }
+            R.id.language_settings_ko -> {
+                localeManager.applicationLocales = LocaleList.forLanguageTags("ko")
+                true
+            }
+            R.id.language_settings_zh -> {
+                localeManager.applicationLocales = LocaleList.forLanguageTags("zh")
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
 
