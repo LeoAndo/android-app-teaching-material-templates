@@ -5,12 +5,10 @@ A collection of app templates targeting instructors teaching at programming scho
 
 # development environment
 
-<img width="686" alt="127751156-0638bd97-e532-43e9-be12-e758a7118141" src="https://user-images.githubusercontent.com/16476224/134197148-9a8d0c73-2257-49e0-a198-ee0f92cdf4bd.png">
+<img width="500" alt="スクリーンショット 2022-02-22 21 06 19" src="https://user-images.githubusercontent.com/16476224/155129056-7ca765fd-0bf2-406b-b54f-c6baea10f391.png">
 
-# [BasicAppSample](https://github.com/LeoAndo/android-app-teaching-materials-templates/tree/main/BasicAppSample)
 
-- Very Simple Template project that supports both java and kotlin versions
-<img src="https://github.com/LeoAndo/android-app-teaching-material-templates/blob/main/BasicAppSample/capture/android.gif" width=320 />
+# [M3BasicSample](https://github.com/LeoAndo/android-app-teaching-material-templates/tree/main/M3BasicSample)
 
 # Other Templates
 https://github.com/LeoAndo/AndroidAppTemplate<br>
