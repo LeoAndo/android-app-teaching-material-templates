@@ -1,17 +1,14 @@
 package com.example.m3basicsample
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.m3basicsample.databinding.FragmentFirstBinding
 import com.example.m3basicsample.models.User
 import com.example.m3basicsample.viewmodels.FirstViewModel
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 internal class FirstFragment : Fragment(R.layout.fragment_first) {
 
     private var _binding: FragmentFirstBinding? = null
@@ -26,7 +23,7 @@ internal class FirstFragment : Fragment(R.layout.fragment_first) {
         _binding = FragmentFirstBinding.bind(view)
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(
-                FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                FirstFragmentDirections.actionFirstFragmentToThirdFragment(
                     User("Yamada", 20)
                 )
             )

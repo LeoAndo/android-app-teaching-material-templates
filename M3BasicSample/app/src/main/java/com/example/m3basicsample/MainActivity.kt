@@ -14,10 +14,15 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.isVisible
+import androidx.navigation.NavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.m3basicsample.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 internal class MainActivity : AppCompatActivity() {
 
+    private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var localeManager: LocaleManager
@@ -32,9 +37,12 @@ internal class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navView.setupWithNavController(navController)
 
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -43,6 +51,22 @@ internal class MainActivity : AppCompatActivity() {
         }
 
         localeManager = getSystemService(LocaleManager::class.java)
+
+        observeDestinations(navView)
+    }
+
+    private fun observeDestinations(navView: BottomNavigationView) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.FirstFragment, R.id.SecondFragment -> {
+                    navView.isVisible = true
+                }
+                else -> {
+                    navView.isVisible = false
+                    Log.d(TAG, "observeDestinations: navigatorName " + destination.navigatorName)
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -79,7 +103,6 @@ internal class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
         val ret = navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
         Log.d(TAG, "onSupportNavigateUp: ret $ret")
         return ret
