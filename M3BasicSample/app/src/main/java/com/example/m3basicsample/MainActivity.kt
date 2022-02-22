@@ -13,7 +13,7 @@ import android.view.MenuItem
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.m3basicsample.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+internal class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
