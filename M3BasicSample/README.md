@@ -5,6 +5,7 @@
 # Features
 - [navigation-bar](https://m3.material.io/components/navigation-bar)
 - [navigation-drawer](https://m3.material.io/components/navigation-drawer/overview)
+  - use Product Flavor (Switch navigation-bar / navigation-drawer layout) 
 - [SplashScreen](https://github.com/LeoAndo/android12-splash-screen)
 - [Per-app language preferences (Android 13+)](https://github.com/LeoAndo/android-per-app-language-preferences-samples)
 - [Themed app icons(Android13+)](https://github.com/LeoAndo/android-themed-icon-samples)
@@ -12,7 +13,6 @@
 - [dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ja)
 - Kotlin
 - ViewModel
-- use Product Flavor (Switch navigation-bar / navigation-drawer layout)
 
 # Screenshot
 
