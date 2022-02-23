@@ -20,8 +20,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.m3basicsample.core.ApplicationLocalesService
 import com.example.m3basicsample.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 internal class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
