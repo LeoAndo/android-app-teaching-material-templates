@@ -16,7 +16,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.m3basicsample.core.ApplicationLocalesHandler
+import com.example.m3basicsample.core.ApplicationLocalesService
 import com.example.m3basicsample.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +30,7 @@ internal class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     @Inject
-    lateinit var applicationLocalesHandler: ApplicationLocalesHandler
+    lateinit var applicationLocalesService: ApplicationLocalesService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -81,27 +81,18 @@ internal class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.language_settings_system -> {
-                applicationLocalesHandler.applicationLocales = LocaleList.getEmptyLocaleList()
-                true
-            }
-            R.id.language_settings_ja -> {
-                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("ja")
-                true
-            }
-            R.id.language_settings_ko -> {
-                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("ko")
-                true
-            }
-            R.id.language_settings_zh -> {
-                applicationLocalesHandler.applicationLocales = LocaleList.forLanguageTags("zh")
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
+        val localeList = when (item.itemId) {
+            R.id.language_settings_system -> applicationLocalesService.applicationLocales =
+                LocaleList.getEmptyLocaleList()
+            R.id.language_settings_ja -> applicationLocalesService.applicationLocales =
+                LocaleList.forLanguageTags("ja")
+            R.id.language_settings_ko -> applicationLocalesService.applicationLocales =
+                LocaleList.forLanguageTags("ko")
+            R.id.language_settings_zh -> applicationLocalesService.applicationLocales =
+                LocaleList.forLanguageTags("zh")
+            else -> null
         }
+        return if (localeList != null) true else super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

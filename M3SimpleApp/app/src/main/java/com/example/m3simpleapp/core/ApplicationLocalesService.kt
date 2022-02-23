@@ -4,10 +4,11 @@ import android.app.LocaleManager
 import android.os.Build
 import android.os.LocaleList
 import androidx.annotation.RequiresApi
+import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 //@TargetApi(Build.VERSION_CODES.TIRAMISU)
-internal class ApplicationLocalesHandler constructor(
+internal class ApplicationLocalesService @Inject constructor(
     val localeManager: LocaleManager,
 ) {
     inline val supportLanguageTags
@@ -18,8 +19,4 @@ internal class ApplicationLocalesHandler constructor(
         set(locales) {
             localeManager.applicationLocales = locales
         }
-
-    companion object {
-        private const val TAG = "ApplicationLocalesHandler"
-    }
 }

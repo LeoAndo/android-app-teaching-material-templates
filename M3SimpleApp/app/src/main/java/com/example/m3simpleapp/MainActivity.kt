@@ -9,7 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.m3simpleapp.core.ApplicationLocalesHandler
+import com.example.m3simpleapp.core.ApplicationLocalesService
 import com.example.m3simpleapp.viewmodels.ActivityViewModel
 import com.example.m3simpleapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +20,7 @@ internal class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     @Inject
-    lateinit var applicationLocalesHandler: ApplicationLocalesHandler
+    lateinit var applicationLocalesService: ApplicationLocalesService
     private val viewModel by viewModels<ActivityViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,13 +49,13 @@ internal class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val localeList = when (item.itemId) {
-            R.id.language_settings_system -> applicationLocalesHandler.applicationLocales =
+            R.id.language_settings_system -> applicationLocalesService.applicationLocales =
                 LocaleList.getEmptyLocaleList()
-            R.id.language_settings_ja -> applicationLocalesHandler.applicationLocales =
+            R.id.language_settings_ja -> applicationLocalesService.applicationLocales =
                 LocaleList.forLanguageTags("ja")
-            R.id.language_settings_ko -> applicationLocalesHandler.applicationLocales =
+            R.id.language_settings_ko -> applicationLocalesService.applicationLocales =
                 LocaleList.forLanguageTags("ko")
-            R.id.language_settings_zh -> applicationLocalesHandler.applicationLocales =
+            R.id.language_settings_zh -> applicationLocalesService.applicationLocales =
                 LocaleList.forLanguageTags("zh")
             else -> null
         }

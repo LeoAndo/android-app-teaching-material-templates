@@ -2,7 +2,6 @@ package com.example.m3simpleapp.di
 
 import android.app.LocaleManager
 import android.content.Context
-import com.example.m3simpleapp.core.ApplicationLocalesHandler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,8 +14,7 @@ import javax.inject.Singleton
 internal object ApplicationModule {
     @Singleton
     @Provides
-    fun provideMyLocaleManager(@ApplicationContext context: Context): ApplicationLocalesHandler {
-        val localeManager = context.getSystemService(LocaleManager::class.java)
-        return ApplicationLocalesHandler(localeManager)
+    fun provideMyLocaleManager(@ApplicationContext context: Context): LocaleManager {
+        return context.getSystemService(LocaleManager::class.java)
     }
 }
