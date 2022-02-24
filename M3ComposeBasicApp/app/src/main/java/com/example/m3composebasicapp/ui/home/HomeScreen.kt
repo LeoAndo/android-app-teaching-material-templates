@@ -2,7 +2,7 @@ package com.example.m3composebasicapp.ui.home
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -61,8 +61,8 @@ internal fun HomeContent(
                 )
             }
             is HomeUiState.Photos -> {
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     itemsIndexed(uiState.results) { _, photo ->
                         Text(
