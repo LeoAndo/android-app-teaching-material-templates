@@ -1,12 +1,11 @@
 package com.example.m3composebasicapp
 
 import android.util.Log
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -20,11 +19,15 @@ import com.example.m3composebasicapp.ui.theme.M3ComposeBasicAppTheme
 import com.example.m3composebasicapp.ui.home.HomeScreen
 import com.example.m3composebasicapp.ui.search.ResultScreen
 import com.example.m3composebasicapp.ui.search.SearchScreen
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
-// TODO: Drawer Layoutにreplaceする
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun MyAppContent() {
+internal fun MyAppContent(
+    drawerState: DrawerState = rememberDrawerState(DrawerValue.Closed),
+    scope: CoroutineScope = rememberCoroutineScope()
+) {
     M3ComposeBasicAppTheme {
         var selectedItem by remember { mutableStateOf(0) }
         val items = listOf(
@@ -32,34 +35,29 @@ internal fun MyAppContent() {
             TopDestinations.FavoriteRoute,
             TopDestinations.SearchRoute
         )
-        Scaffold(
-            bottomBar = {
-                NavigationBar {
-                    items.forEachIndexed { index, item ->
-                        NavigationBarItem(
-                            icon = { Icon(item.icon, contentDescription = item.label) },
-                            label = { Text(item.label) },
-                            selected = selectedItem == index,
-                            onClick = { selectedItem = index }
-                        )
-                    }
+        ModalNavigationDrawer(
+            drawerState = drawerState,
+            drawerContent = {
+                items.forEachIndexed { index, item ->
+                    NavigationDrawerItem(
+                        icon = { Icon(item.icon, contentDescription = item.label) },
+                        label = { Text(item.label) },
+                        selected = selectedItem == index,
+                        onClick = {
+                            scope.launch { drawerState.close() }
+                            selectedItem = index
+                        },
+                        modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                    )
                 }
-            }, content = {
+            },
+            content = {
                 Log.d("MyAppContent", "selectedItem: " + items[selectedItem].routeName)
-                Log.d("MyAppContent", "paddingValues: $it")
-                Log.d(
-                    "MyAppContent",
-                    "calculateStartPadding Ltr: " + it.calculateStartPadding(LayoutDirection.Ltr)
-                )
-                Log.d(
-                    "MyAppContent",
-                    "calculateStartPadding Rtl: " + it.calculateStartPadding(LayoutDirection.Rtl)
-                )
-                Log.d("MyAppContent", "calculateBottomPadding: " + it.calculateBottomPadding())
-                Box(modifier = Modifier.mainContentPadding(it)) {
+                Box(modifier = Modifier.mainContentPadding(PaddingValues(20.dp))) {
                     MyAppNavigationGraph(startDestination = items[selectedItem].routeName)
                 }
-            })
+            }
+        )
     }
 }
 
