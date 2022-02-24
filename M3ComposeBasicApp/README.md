@@ -10,7 +10,7 @@
 - [Themed app icons(Android13+)](https://github.com/LeoAndo/android-themed-icon-samples)
 - [dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ja)
 - Kotlin
-- ViewModel
+- [ViewModel & UiState](https://github.com/LeoAndo/android-app-teaching-material-templates/tree/main/M3ComposeBasicApp/app/src/main/java/com/example/m3composebasicapp/ui/home)
 
 # Screenshot
 
