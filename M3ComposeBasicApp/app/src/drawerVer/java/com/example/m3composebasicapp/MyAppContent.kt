@@ -21,6 +21,7 @@ import com.example.m3composebasicapp.ui.home.HomeScreen
 import com.example.m3composebasicapp.ui.search.ResultScreen
 import com.example.m3composebasicapp.ui.search.SearchScreen
 
+// TODO: Drawer Layoutにreplaceする
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MyAppContent() {
