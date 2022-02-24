@@ -1,7 +1,7 @@
 # Overview
 
-Android app programming school for beginners does not do large-scale app development, so
-A collection of app templates targeting instructors teaching at programming schools.
+Android app programming school for beginners does not do large-scale app development.<br> 
+this repository is app templates targeting instructors teaching at programming schools.
 
 # development environment
 
