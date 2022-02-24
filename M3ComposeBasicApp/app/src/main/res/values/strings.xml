@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">M3ComposeBasicApp</string>
-    <string name="add_todo_item">add item</string>
-    <string name="delete_todo_items">delete item</string>
+    <string name="open_dialog">open_dialog</string>
 </resources>

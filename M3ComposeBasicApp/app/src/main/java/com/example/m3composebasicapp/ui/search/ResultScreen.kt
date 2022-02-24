@@ -37,7 +37,7 @@ internal fun ResultScreen(
         ResultContent(
             navController = navController,
             modifier = modifier,
-            onError = { errorMessage = query }
+            showSnack = { errorMessage = query }
         )
     }
 }
@@ -47,7 +47,7 @@ internal fun ResultScreen(
 internal fun ResultContent(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    onError: () -> Unit,
+    showSnack: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -62,7 +62,7 @@ internal fun ResultContent(
         }
     ) {
         Column {
-            Button(onClick = { onError() }) {
+            Button(onClick = { showSnack() }) {
                 Text(text = "show snackbar")
             }
             Spacer(modifier = Modifier.height(20.dp))

@@ -6,7 +6,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -51,7 +50,7 @@ internal fun HomeContent(
             HomeUiState.Initial, HomeUiState.Loading -> {
                 FullScreenLoading()
             }
-            HomeUiState.NoPhotos -> {
+            HomeUiState.NoData -> {
                 ErrorMessage(
                     message = "empty list.",
                     onClickReload = {},
@@ -60,16 +59,13 @@ internal fun HomeContent(
                         .wrapContentSize()
                 )
             }
-            is HomeUiState.Photos -> {
+            is HomeUiState.Data -> {
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    itemsIndexed(uiState.results) { _, photo ->
+                    itemsIndexed(uiState.results) { _, data ->
                         Text(
-                            text = photo,
-                            modifier = Modifier
-                                .size(120.dp)
-                                .align(Alignment.Center)
+                            text = data,
                         )
                     }
                 }

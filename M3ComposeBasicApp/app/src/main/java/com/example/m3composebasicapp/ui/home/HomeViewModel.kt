@@ -6,6 +6,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class HomeViewModel @Inject constructor() : ViewModel() {
@@ -14,11 +17,15 @@ internal class HomeViewModel @Inject constructor() : ViewModel() {
         private set
 
     init {
-        val data = buildList {
-            repeat(10) {
-                add("item: $it")
+        viewModelScope.launch {
+            uiState = HomeUiState.Loading
+            val data = buildList {
+                repeat(100) {
+                    add("item: $it")
+                }
             }
+            delay(1500L)
+            uiState = HomeUiState.Data(data)
         }
-        uiState = HomeUiState.Photos(data)
     }
 }

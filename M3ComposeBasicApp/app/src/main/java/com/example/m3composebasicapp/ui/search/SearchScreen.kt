@@ -1,19 +1,12 @@
 package com.example.m3composebasicapp.ui.search
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material3.Button
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.m3composebasicapp.ui.extentions.mainContentPadding
-import com.example.m3composebasicapp.ui.theme.M3ComposeBasicAppTheme
 
 @Composable
 internal fun SearchScreen(
@@ -59,40 +52,10 @@ internal fun SearchContent(
             onClick = {
                 navigateToNextScreen(queryText)
             }, modifier = Modifier
-                .fillMaxWidth()
-                .testTag("test_tag_button"),
+                .fillMaxWidth(),
             enabled = isEnableBtn
         ) {
             Text(text = "go_to_result_screen")
-        }
-    }
-}
-
-@Preview(
-    name = "default",
-    showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
-    device = Devices.PIXEL_4,
-    showSystemUi = true
-)
-@Preview(
-    name = "dark mode",
-    showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    device = Devices.PIXEL_4,
-    showSystemUi = true
-)
-@Composable
-fun SearchContentPreview() {
-    M3ComposeBasicAppTheme {
-        Surface {
-            SearchContent(
-                modifier = Modifier.mainContentPadding(PaddingValues(12.dp, 12.dp, 12.dp, 92.dp)),
-                "queryText",
-                true,
-                navigateToNextScreen = {},
-                onValueChange = {},
-            )
         }
     }
 }
