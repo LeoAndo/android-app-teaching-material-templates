@@ -3,9 +3,13 @@ package com.example.m3composebasicapp
 import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -32,6 +36,13 @@ internal fun MyAppContent() {
             TopDestinations.SearchRoute
         )
         Scaffold(
+            floatingActionButton = {
+                FloatingActionButton(onClick = {
+                    Log.d("MyAppContent", "FloatingActionButton Clicked!!")
+                }) {
+                    Icon(Icons.Filled.Email, contentDescription = "Email")
+                }
+            },
             bottomBar = {
                 NavigationBar {
                     items.forEachIndexed { index, item ->
