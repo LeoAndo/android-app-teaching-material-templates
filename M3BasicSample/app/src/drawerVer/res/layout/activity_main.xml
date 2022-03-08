@@ -53,7 +53,6 @@
             android:layout_marginEnd="@dimen/fab_margin"
             android:layout_marginBottom="12dp"
             android:contentDescription="send email"
-            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:srcCompat="@android:drawable/ic_dialog_email" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
