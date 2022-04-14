@@ -6,3 +6,7 @@ Empty Activity
 - [Themed app icons(Android13+)](https://github.com/LeoAndo/android-themed-icon-samples)
 - Java11
 - Use Activity Only
+
+# screenshot
+
+<img src="capture.png" width=320 />
