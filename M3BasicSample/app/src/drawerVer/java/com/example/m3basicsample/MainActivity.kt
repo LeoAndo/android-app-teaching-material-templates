@@ -1,7 +1,6 @@
 package com.example.m3basicsample
 
 import android.os.Bundle
-import android.os.LocaleList
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -12,16 +11,16 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.m3basicsample.core.ApplicationLocalesService
 import com.example.m3basicsample.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 internal class MainActivity : AppCompatActivity() {
@@ -29,9 +28,6 @@ internal class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
-    @Inject
-    lateinit var applicationLocalesService: ApplicationLocalesService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -89,16 +85,13 @@ internal class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val localeList = when (item.itemId) {
-            R.id.language_settings_system -> applicationLocalesService.applicationLocales =
-                LocaleList.getEmptyLocaleList()
-            R.id.language_settings_ja -> applicationLocalesService.applicationLocales =
-                LocaleList.forLanguageTags("ja")
-            R.id.language_settings_ko -> applicationLocalesService.applicationLocales =
-                LocaleList.forLanguageTags("ko")
-            R.id.language_settings_zh -> applicationLocalesService.applicationLocales =
-                LocaleList.forLanguageTags("zh")
+            R.id.language_settings_system -> LocaleListCompat.getEmptyLocaleList()
+            R.id.language_settings_ja -> LocaleListCompat.forLanguageTags("ja")
+            R.id.language_settings_ko -> LocaleListCompat.forLanguageTags("ko")
+            R.id.language_settings_zh -> LocaleListCompat.forLanguageTags("zh")
             else -> null
         }
+        localeList?.let { AppCompatDelegate.setApplicationLocales(it) }
         return if (localeList != null) true else super.onOptionsItemSelected(item)
     }
 
