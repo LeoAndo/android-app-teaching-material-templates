@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace 'com.example.m3basicsample' // TODO replace java package name.
-    compileSdkPreview "Tiramisu"
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.m3basicsample" // TODO replace application ID.
-        minSdkPreview "Tiramisu"
-        targetSdkPreview "Tiramisu"
+        minSdk 29
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
