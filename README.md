@@ -9,8 +9,8 @@ this repository is app templates targeting instructors teaching at programming s
 
 # Min / Target SDKVersion
 ```groovy
-minSdkPreview "Tiramisu"
-targetSdkPreview "Tiramisu"
+minSdk 29
+targetSdk 33
 ```
 
 # [M3BasicSample](https://github.com/LeoAndo/android-app-teaching-material-templates/tree/main/M3BasicSample)
